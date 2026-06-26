@@ -84,7 +84,7 @@ This structural property has a well-documented but underexploited consequence: s
 - Operating transmission rate used throughout: β = 0.208 (3× threshold, chosen for a clear, repeatable outbreak)
 
 ### 6.2 Baseline (No Intervention)
-- Mean final attack rate: **26.2%** of the network infected (n=50 Monte Carlo runs)
+- Mean final attack rate: **26.2%** of the network infected (n=50 Monte Carlo replicates for baseline, scaled to n=100 replicates for strategic evaluation)
 - High variance (std = 0.151) — outcome strongly depends on where the outbreak starts relative to network hubs
 
 ### 6.3 Strategy Comparison at 10% Coverage (n=100 Monte Carlo runs per strategy)

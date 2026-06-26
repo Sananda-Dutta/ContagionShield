@@ -144,7 +144,7 @@ All components run **locally and free of charge** — no paid APIs, no GPU requi
 
 ```bash
 # Clone and set up environment
-git clone <your-repo-url>
+git clone https://github.com/Sananda-Dutta/ContagionShield
 cd contagionshield
 python -m venv venv
 source venv/bin/activate  # or venv\Scripts\activate on Windows

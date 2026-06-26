@@ -69,7 +69,7 @@ This structural property has a well-documented but underexploited consequence: s
 ## 5. Methodology
 
 1. **Network construction**: a Barabási–Albert graph (n=1000, m=3) was generated to approximate the heavy-tailed degree distribution of real social networks.
-2. **Threshold validation**: the theoretical epidemic threshold (β꜀ = γ / spectral radius) was computed analytically *before* any simulation was run, then confirmed empirically by simulating both below- and above-threshold transmission rates and observing the expected qualitative difference (outbreak fizzles vs. outbreak spreads).
+2. **Threshold validation**: the theoretical epidemic threshold (β꜀ = γ / spectral radius) was computed analytically *before* any simulation was run, then confirmed empirically by simulating both below- and above-threshold transmission rates and observing the expected qualitative difference (outbreak fizzles vs. outbreak spreads).![Outbreak Threshold Verification Curves](outputs/threshold_validation.png)
 3. **Baseline epidemic**: with no intervention, 100 Monte Carlo replicates at the operating transmission rate established a baseline distribution of outcomes.
 4. **Strategy comparison**: three node-selection strategies (random, degree centrality, betweenness centrality) were each used to pre-immunize a fixed percentage of the network, holding coverage constant across strategies to isolate the effect of *node selection* specifically.
 5. **Statistical testing**: a one-sided Mann-Whitney U test (non-parametric, no normality assumption) was used to test whether targeted strategies produced significantly lower attack rates than random seeding.

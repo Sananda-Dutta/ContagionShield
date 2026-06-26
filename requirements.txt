@@ -1,0 +1,9 @@
+networkx==3.3
+numpy==1.26.4
+pandas==2.2.2
+matplotlib==3.9.0
+scipy==1.13.1
+EoN==1.1
+streamlit==1.36.0
+transformers==4.42.3
+torch==2.3.1

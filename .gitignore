@@ -1,0 +1,14 @@
+# Virtual environment
+venv/
+test_env/
+
+# Regenerable data (recreate via src/01-05 scripts)
+data/*.pkl
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS-specific
+.DS_Store
+Thumbs.db

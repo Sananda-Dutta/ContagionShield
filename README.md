@@ -86,6 +86,7 @@ This structural property has a well-documented but underexploited consequence: s
 ### 6.2 Baseline (No Intervention)
 - Mean final attack rate: **26.2%** of the network infected (n=50 Monte Carlo replicates for baseline, scaled to n=100 replicates for strategic evaluation)
 - High variance (std = 0.151) — outcome strongly depends on where the outbreak starts relative to network hubs
+![Baseline Statistical Distribution Boxplot](outputs/baseline_threshold_boxplot.png)
 
 ### 6.3 Strategy Comparison at 10% Coverage (n=100 Monte Carlo runs per strategy)
 
@@ -109,6 +110,8 @@ This structural property has a well-documented but underexploited consequence: s
 | 15% | 0.138 | 0.009 | 0.008 |
 | 20% | 0.129 | 0.008 | 0.009 |
 | 30% | 0.102 | 0.009 | 0.009 |
+
+![Inoculation Strategy Response Curves](outputs/sensitivity_sweep.png)
 
 **Headline finding:** targeted strategies achieve nearly all of their protective benefit at just **2% coverage** and barely improve beyond that point. Random seeding, by contrast, declines slowly and almost linearly — and **never catches up to targeted strategies even at 30% coverage**, a 15x larger investment of inoculation resources. This means a network-aware intervention could achieve the same protective effect as a naive campaign using a small fraction of the outreach budget.
 

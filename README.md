@@ -92,8 +92,8 @@ This structural property has a well-documented but underexploited consequence: s
 | Strategy | Mean Attack Rate | Std Dev |
 |---|---|---|
 | Random | 0.195 | 0.152 |
-| Degree Centrality | 0.010 | 0.005 |
-| Betweenness Centrality | 0.012 | 0.006 |
+| Degree Centrality | 0.009 | 0.005 |
+| Betweenness Centrality | 0.010 | 0.006 |
 
 - **Degree-centrality seeding reduces attack rate by 94.8% vs. random seeding** (Mann-Whitney U test, p = 1.11 × 10⁻¹⁶)
 - **Betweenness-centrality seeding reduces attack rate by 94.0% vs. random seeding** (p = 1.76 × 10⁻¹⁴)

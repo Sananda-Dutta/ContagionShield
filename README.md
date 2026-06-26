@@ -69,7 +69,7 @@ This structural property has a well-documented but underexploited consequence: s
 ## 5. Methodology
 
 1. **Network construction**: a Barabási–Albert graph (n=1000, m=3) was generated to approximate the heavy-tailed degree distribution of real social networks.
-2. **Threshold validation**: the theoretical epidemic threshold (β꜀ = γ / spectral radius) was computed analytically *before* any simulation was run, then confirmed empirically by simulating both below- and above-threshold transmission rates and observing the expected qualitative difference (outbreak fizzles vs. outbreak spreads).
+2. **Threshold validation**: the theoretical epidemic threshold (β꜀ = γ / spectral radius) was computed analytically *before* any simulation was run, then confirmed empirically by simulating both below- and above-threshold transmission rates and observing the expected qualitative difference (outbreak fizzles vs. outbreak spreads).![Outbreak Threshold Verification Curves](outputs/threshold_validation.png)
 3. **Baseline epidemic**: with no intervention, 100 Monte Carlo replicates at the operating transmission rate established a baseline distribution of outcomes.
 4. **Strategy comparison**: three node-selection strategies (random, degree centrality, betweenness centrality) were each used to pre-immunize a fixed percentage of the network, holding coverage constant across strategies to isolate the effect of *node selection* specifically.
 5. **Statistical testing**: a one-sided Mann-Whitney U test (non-parametric, no normality assumption) was used to test whether targeted strategies produced significantly lower attack rates than random seeding.
@@ -84,16 +84,17 @@ This structural property has a well-documented but underexploited consequence: s
 - Operating transmission rate used throughout: β = 0.208 (3× threshold, chosen for a clear, repeatable outbreak)
 
 ### 6.2 Baseline (No Intervention)
-- Mean final attack rate: **26.2%** of the network infected (n=50 Monte Carlo runs)
+- Mean final attack rate: **26.2%** of the network infected (n=50 Monte Carlo replicates for baseline, scaled to n=100 replicates for strategic evaluation)
 - High variance (std = 0.151) — outcome strongly depends on where the outbreak starts relative to network hubs
+![Baseline Statistical Distribution Boxplot](outputs/baseline_threshold_boxplot.png)
 
 ### 6.3 Strategy Comparison at 10% Coverage (n=100 Monte Carlo runs per strategy)
 
 | Strategy | Mean Attack Rate | Std Dev |
 |---|---|---|
 | Random | 0.195 | 0.152 |
-| Degree Centrality | 0.010 | 0.005 |
-| Betweenness Centrality | 0.012 | 0.006 |
+| Degree Centrality | 0.009 | 0.005 |
+| Betweenness Centrality | 0.010 | 0.006 |
 
 - **Degree-centrality seeding reduces attack rate by 94.8% vs. random seeding** (Mann-Whitney U test, p = 1.11 × 10⁻¹⁶)
 - **Betweenness-centrality seeding reduces attack rate by 94.0% vs. random seeding** (p = 1.76 × 10⁻¹⁴)
@@ -109,6 +110,8 @@ This structural property has a well-documented but underexploited consequence: s
 | 15% | 0.138 | 0.009 | 0.008 |
 | 20% | 0.129 | 0.008 | 0.009 |
 | 30% | 0.102 | 0.009 | 0.009 |
+
+![Inoculation Strategy Response Curves](outputs/sensitivity_sweep.png)
 
 **Headline finding:** targeted strategies achieve nearly all of their protective benefit at just **2% coverage** and barely improve beyond that point. Random seeding, by contrast, declines slowly and almost linearly — and **never catches up to targeted strategies even at 30% coverage**, a 15x larger investment of inoculation resources. This means a network-aware intervention could achieve the same protective effect as a naive campaign using a small fraction of the outreach budget.
 
@@ -141,7 +144,7 @@ All components run **locally and free of charge** — no paid APIs, no GPU requi
 
 ```bash
 # Clone and set up environment
-git clone <your-repo-url>
+git clone https://github.com/Sananda-Dutta/ContagionShield
 cd contagionshield
 python -m venv venv
 source venv/bin/activate  # or venv\Scripts\activate on Windows

@@ -1,0 +1,13 @@
+text,true_label,predicted_label,confidence
+"If we don't act now, our children will inherit a ruined world.",appeal to fear,appeal to fear,0.43290969729423523
+You're either with us or against us — there's no middle ground.,false dichotomy,loaded language,0.5428114533424377
+These corrupt politicians have betrayed every single one of us.,loaded language,appeal to fear,0.3160708546638489
+It's their fault — they're the reason everything has gone wrong.,scapegoating,scapegoating,0.6720117926597595
+The meeting is scheduled for 3pm in the main conference room.,neutral statement,loaded language,0.29268452525138855
+"Unless we stop them immediately, everything we love will be destroyed.",appeal to fear,appeal to fear,0.5495470762252808
+Anyone who disagrees with this policy clearly doesn't care about safety.,false dichotomy,scapegoating,0.3404494822025299
+"The disgraceful, reckless actions of these so-called leaders shame us all.",loaded language,loaded language,0.6279821395874023
+Immigrants are the reason wages have stagnated for ordinary workers.,scapegoating,scapegoating,0.5935229063034058
+The report was published last Tuesday and is available online.,neutral statement,neutral statement,0.2750387191772461
+Buy now before this opportunity disappears forever.,appeal to fear,loaded language,0.3775053322315216
+There are only two choices here: total victory or total defeat.,false dichotomy,loaded language,0.7151402831077576

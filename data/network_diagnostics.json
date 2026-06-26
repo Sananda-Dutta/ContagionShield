@@ -1,0 +1,9 @@
+{
+  "n_nodes": 1000,
+  "n_edges": 2991,
+  "avg_degree": 5.982,
+  "max_degree": 93,
+  "avg_clustering": 0.033289195953097976,
+  "spectral_radius": 14.42160761348483,
+  "theoretical_beta_threshold": 0.06934039718740902
+}

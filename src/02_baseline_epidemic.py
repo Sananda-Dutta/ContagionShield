@@ -42,7 +42,7 @@ attack_rate_above = R_above[-1] / N
 print(f"Final attack rate (below threshold): {attack_rate_below:.3f}")
 print(f"Final attack rate (above threshold): {attack_rate_above:.3f}")
 
-fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+fig, axes = plt.subplots(1, 2, figsize=(9,6))
 
 axes[0].plot(t_below, I_below, color="orange", label="Infected")
 axes[0].plot(t_below, R_below, color="green", label="Recovered")

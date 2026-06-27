@@ -4,7 +4,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pickle
 from EoN import fast_SIR
+import pandas as pd
 
+# 1. THE ABSOLUTE FIRST STREAMLIT CALL: Set up config once and only once
 st.set_page_config(page_title="ContagionShield", layout="wide")
 
 @st.cache_resource
@@ -17,28 +19,13 @@ def load_data():
         baseline = pickle.load(f)
     return G, centrality, baseline
 
+# Initialize data foundations
 G, centrality, baseline = load_data()
 N = G.number_of_nodes()
 beta = baseline["operating_beta"]
 gamma = baseline["gamma"]
 
-st.set_page_config(page_title="ContagionShield", layout="wide")
-
-@st.cache_resource
-def load_data():
-    with open("data/network.pkl", "rb") as f:
-        G = pickle.load(f)
-    with open("data/centrality.pkl", "rb") as f:
-        centrality = pickle.load(f)
-    with open("data/baseline_results.pkl", "rb") as f:
-        baseline = pickle.load(f)
-    return G, centrality, baseline
-
-G, centrality, baseline = load_data()
-N = G.number_of_nodes()
-beta = baseline["operating_beta"]
-gamma = baseline["gamma"]
-
+# Sidebar Layout Controls
 st.sidebar.header("Simulation Controls")
 
 strategy = st.sidebar.selectbox(
@@ -67,12 +54,13 @@ def select_nodes(strategy, pct, G, centrality, seed=42):
         sorted_nodes = sorted(centrality["betweenness_centrality"].items(), key=lambda x: x[1], reverse=True)
         return [node for node, _ in sorted_nodes[:n_select]]
 
+# Core Simulation Execution Engine
 if run_button:
     inoculated_nodes = select_nodes(strategy, inoculation_pct, G, centrality)
     
-    n_demo_replicates = 15  # small enough to stay fast, large enough to stabilize the average
+    n_demo_replicates = 15  
     attack_rates = []
-    curves = []  # store (t, I, R) for plotting one representative run
+    curves = []  
     
     with st.spinner(f"Running {n_demo_replicates} simulations..."):
         for i in range(n_demo_replicates):
@@ -100,9 +88,9 @@ if run_button:
     reduction = (baseline_rate - final_attack_rate) / baseline_rate * 100 if baseline_rate > 0 else 0
     col3.metric("Reduction vs. Baseline", f"{reduction:.1f}%")
     
-    # Plot the FIRST replicate as a representative curve
+    # Plot the FIRST replicate as a representative curve using explicit 3:2 aspect ratio canvas
     t, I, R = curves[0]
-    fig, ax = plt.subplots(figsize=(10, 5))
+    fig, ax = plt.subplots(figsize=(9, 6))  # Explicit 3:2 Dimension Matrix Lock
     ax.plot(t, I, label="Infected", color="orange", linewidth=2)
     ax.plot(t, R, label="Recovered/Inoculated-effective", color="green", linewidth=2)
     ax.axhline(baseline_rate * N, color="red", linestyle="--", alpha=0.5, label="Baseline final size")
@@ -110,7 +98,7 @@ if run_button:
     ax.set_ylabel("Number of Nodes")
     ax.set_title(f"Epidemic Curve (1 of {n_demo_replicates} runs) — {strategy} @ {inoculation_pct}% Coverage")
     ax.legend()
-    st.pyplot(fig)
+    st.pyplot(fig, bbox_inches="tight")
     
     st.caption(f"Metrics above are averaged across {n_demo_replicates} simulation runs to account for natural stochastic variance (especially high for random seeding). Curve shown is one representative run.")
     
@@ -122,6 +110,5 @@ st.markdown("---")
 st.header("🔍 What Are We Inoculating Against?")
 st.markdown("Zero-shot classification of manipulation techniques in example text:")
 
-import pandas as pd
 nlp_df = pd.read_csv("outputs/nlp_classification_results.csv")
 st.dataframe(nlp_df[["text", "true_label", "predicted_label", "confidence"]], use_container_width=True)

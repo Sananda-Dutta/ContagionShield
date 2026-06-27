@@ -42,7 +42,7 @@ print(f"Theoretical epidemic threshold (beta_c): {theoretical_beta_threshold:.4f
 print(f"  -> beta below this: outbreak should fizzle out")
 print(f"  -> beta above this: outbreak should spread widely")
 
-plt.figure(figsize=(10, 8))
+plt.figure(figsize=(9, 6))
 
 # Color nodes by degree so hubs are visually obvious
 node_colors = [degrees[i] for i in range(len(degrees))]

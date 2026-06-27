@@ -22,13 +22,6 @@ N = G.number_of_nodes()
 beta = baseline["operating_beta"]
 gamma = baseline["gamma"]
 
-import streamlit as st
-import networkx as nx
-import numpy as np
-import matplotlib.pyplot as plt
-import pickle
-from EoN import fast_SIR
-
 st.set_page_config(page_title="ContagionShield", layout="wide")
 
 @st.cache_resource
